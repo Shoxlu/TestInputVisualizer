@@ -1,0 +1,1 @@
+sq -c -o "loop.nut" "loop_decomp.nut"

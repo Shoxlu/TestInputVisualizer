@@ -1,0 +1,1 @@
+sq -c -o "base.nut" "base_decomp.nut"
