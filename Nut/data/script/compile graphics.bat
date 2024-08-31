@@ -1,1 +1,0 @@
-sq -c -o "graphics.nut" "graphics_decomp.nut"

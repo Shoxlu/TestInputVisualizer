@@ -1,1 +1,0 @@
-sq -c -o "InputVisualizer.nut" "InputVisualizer_decomp.nut"
