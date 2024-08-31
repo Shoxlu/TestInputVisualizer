@@ -2,7 +2,6 @@
 #include <string.h>
 #include <windows.h>
 #include "PatchUtils.h"
-#include "log.h"
 
 void mem_write(void* address, const void* data, size_t size) {
     DWORD oldProtect;
@@ -15,7 +14,7 @@ void mem_write(void* address, const void* data, size_t size) {
 int mem_prot_overwrite(void* address,size_t size,DWORD prot) {
     int r = VirtualProtect(address,size,prot,NULL);
     if (r != 0){
-        log_printf("Failed to overwrite protection of %x error:%d\n",address,GetLastError());
+       // printf("Failed to overwrite protection of %x error:%d\n",address,GetLastError());
     }
     return r;
 }

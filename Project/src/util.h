@@ -121,37 +121,4 @@ forceinline uintptr_t operator ""_R(unsigned long long int addr) {
     return (uintptr_t)addr + base_address;
 }
 
-template <size_t bit_count>
-using SBitIntType = std::conditional_t<bit_count <= 8, int8_t,
-					std::conditional_t<bit_count <= 16, int16_t,
-					std::conditional_t<bit_count <= 32, int32_t,
-					std::conditional_t<bit_count <= 64, int64_t,
-					void>>>>;
-template <size_t bit_count>
-using UBitIntType = std::conditional_t<bit_count <= 8, uint8_t,
-					std::conditional_t<bit_count <= 16, uint16_t,
-					std::conditional_t<bit_count <= 32, uint32_t,
-					std::conditional_t<bit_count <= 64, uint64_t,
-					void>>>>;
-                    
-template <typename R, typename B, typename O> requires(!std::is_same_v<R, B>)
-static forceinline R* based_pointer(B* base, O offset) {
-    return (R*)((uintptr_t)base + (uintptr_t)offset);
-}
-
-template <typename P, typename O>
-static forceinline P* based_pointer(P* base, O offset) {
-    return (P*)((uintptr_t)base + (uintptr_t)offset);
-}
-
-template <typename R, typename B, typename O> requires(!std::is_pointer_v<B>)
-static forceinline R* based_pointer(B base, O offset) {
-    return (R*)((uintptr_t)base + (uintptr_t)offset);
-}
-
-template <typename B, typename O> requires(!std::is_pointer_v<B>)
-static forceinline B based_pointer(B base, O offset) {
-    return (B)((uintptr_t)base + (uintptr_t)offset);
-}
-
 #endif
